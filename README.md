@@ -80,15 +80,13 @@ graph TD
 ### Student State Transition
 
 ```mermaid
-stateDiagram-v2
-    [*] --> Registered: Enroll Student & Photo
-    Registered --> Inside: Initial Status on Registration
-    
-    Inside --> Only_Outside: Face Detected at Gate (Action: OUT)
-    Note right of Only_Outside: Spoken TTS: 'Goodbye [Name], have a safe trip.'\nLogs out time
-    
-    Only_Outside --> Inside: Face Detected at Gate (Action: IN)
-    Note right of Inside: Spoken TTS: 'Welcome back, [Name].'\nLogs return time
+flowchart LR
+    Start([Enrolled Student]) --> Inside["Status: INSIDE"]
+    Inside -->|"Face Scanned (Action: OUT)"| Outside["Status: ONLY_OUTSIDE"]
+    Outside -->|"Face Scanned (Action: IN)"| Inside
+
+    Outside -.-> NoteOut["Spoken TTS: 'Goodbye, have a safe trip'<br/>Logs departure timestamp"]
+    Inside -.-> NoteIn["Spoken TTS: 'Welcome back'<br/>Logs return timestamp"]
 ```
 
 ---
@@ -216,3 +214,4 @@ This verifies:
 
 Developed by **Ashutosh Nimbalkar** ([@ASHUTOSHNIMBALKAR](https://github.com/ASHUTOSHNIMBALKAR)).  
 Distributed under the **MIT License**.
+
