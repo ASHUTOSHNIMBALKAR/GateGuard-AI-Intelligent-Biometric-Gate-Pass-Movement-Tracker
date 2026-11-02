@@ -210,8 +210,7 @@ This verifies:
 
 ---
 
-## License & Author
+## License 
 
-Developed by **Ashutosh Nimbalkar** ([@ASHUTOSHNIMBALKAR](https://github.com/ASHUTOSHNIMBALKAR)).  
 Distributed under the **MIT License**.
 
